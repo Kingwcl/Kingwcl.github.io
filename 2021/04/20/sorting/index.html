@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://Kingwcl.github.io">
-  <title>Archives | 我的博客</title>
+  <title>排序问题 | 我的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我的hexo博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的博客">
-<meta property="og:url" content="https://kingwcl.github.io/archives/index.html">
+  <meta name="description" content="本文记录在排序算法学习时的理解和心得，总结插入排序，归并排序，快速排序和堆排序算法特点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序问题">
+<meta property="og:url" content="https://kingwcl.github.io/2021/04/20/sorting/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="我的hexo博客">
+<meta property="og:description" content="本文记录在排序算法学习时的理解和心得，总结插入排序，归并排序，快速排序和堆排序算法特点。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-20T02:31:17.000Z">
+<meta property="article:modified_time" content="2021-04-20T03:33:17.000Z">
 <meta property="article:author" content="kingwcl">
 <meta name="twitter:card" content="summary">
   
@@ -180,89 +182,207 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
+            <article id="post-sorting"
+  class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      排序问题
+    </h1>
+  
+
+          <!--显示阅读次数 还有问题-->
+          
+            <br />
+            <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+              <span class="icon-sort"></span>
+              <span style="color:#ef7522;font-size:14px;">
+                阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+              </span>
+            </a>
             
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/20/sorting/" class="archive-article-date">
+              <!--显示阅读次数完毕-->
+              
+                <a href="/2021/04/20/sorting/" class="archive-article-date">
   	<time datetime="2021-04-20T02:31:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-20</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/20/sorting/">排序问题</a>
-    </h1>
-  
+                  
+      </header>
+      
+        <div class="article-entry" itemprop="articleBody">
 
-        <div class="article-info info-on-right">
-          
+          <!-- 文章头增加转载声明 链接url有问题 -->
           
 
+            
+              <div class="topdeclare">
+
+                <hr>
+                <strong>如需转载，请根据</strong>
+                <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议
+                </a>
+                许可，附上本文作者及链接。
+                <br>
+
+                <strong>本文作者：</strong>
+                
+                  kingwcl
+                    
+                        <br>
+                        <strong>博客链接：</strong>
+                        <a href="https://kingwcl.github.io/2021/04/20/sorting/">
+                          https://kingwcl.github.io/2021/04/20/sorting/
+                        </a>
+                        <br>
+                        <hr>
+              </div>
+              
+                  <!-- 文章头增加转载声明结束 -->
+                  
+                            <p>本文记录在排序算法学习时的理解和心得，总结插入排序，归并排序，快速排序和堆排序算法特点。</p>
+<span id="more"></span>
+
+<h1 id="排序前准备"><a href="#排序前准备" class="headerlink" title="排序前准备"></a>排序前准备</h1><p>将需要排序的序列输入到向量中，调用排序算法，输出排序后结果。main函数如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; a;</span><br><span class="line">    <span class="keyword">int</span> number, len;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;please input:&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; number;</span><br><span class="line">        a.<span class="built_in">push_back</span>(number);</span><br><span class="line">        <span class="keyword">if</span> (cin.<span class="built_in">get</span>() == <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    len = a.<span class="built_in">size</span>();</span><br><span class="line">    <span class="built_in">Sort</span>(a, len);<span class="comment">//编写的算法</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; a[i] &lt;&lt; <span class="string">&quot;,&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><h2 id="插入排序算法理解"><a href="#插入排序算法理解" class="headerlink" title="插入排序算法理解"></a>插入排序算法理解</h2><p>首先我们假设一个数前面的序列是有序的，然后将这个数取出来，依次从后向前将其与前面的元素比较，如果位置不对则不断比较，直到找到正确的位置，在比较期间，将比较过的元素向后移，为<br>取出的数留位置。因为我们假设这个数前面的序列都是有序的，所以我们只需要从第二个数开始，不断重复这个过程，直到为最后一个元素找到合适的位置。</p>
+<h2 id="插入排序算法示例"><a href="#插入排序算法示例" class="headerlink" title="插入排序算法示例"></a>插入排序算法示例</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;a, <span class="keyword">int</span> length)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j, tmp;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        tmp = a[i];</span><br><span class="line">        <span class="keyword">for</span> (j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span> &amp;&amp; tmp &gt; a[j]; j--)</span><br><span class="line">        &#123;</span><br><span class="line">            a[j + <span class="number">1</span>] = a[j];</span><br><span class="line">        &#125;</span><br><span class="line">        a[j + <span class="number">1</span>] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>更新中</p>
+
+                              
+
+                                <!-- 添加文章结束提示 -->
+                                
+                                  
+                                    <div class="essayending">
+                                      <div>
+                                        <div style="text-align:center;color: #ccc;font-size:22px;">
+                                          <br />
+                                          <br />
+                                          -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------
+                                          <br />
+                                          <br />
+                                          <br />
+                                          <br />
+                                        </div>
+                                      </div>
+                                    </div>
+                                    
+
+                                        
+                                          <!-- 添加文章结束提示结束 -->
+
+                                          
         </div>
-        <div class="clearfix"></div>
-    </header>
+        <div class="article-info article-info-index">
+          
+              
+                
+
+                  
+
+                      
+                        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://kingwcl.github.io/2021/04/20/sorting/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+                          
+                            <div class="clearfix"></div>
+        </div>
   </div>
 </article>
+
   
+<nav id="article-nav">
+  
+  
+    <a href="/2021/04/15/hexoProblem/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo部署时遇到的问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/15/hexoProblem/" class="archive-article-date">
-  	<time datetime="2021-04-15T13:45:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
-</a>
+      <aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/15/hexoProblem/">hexo部署时遇到的问题</a>
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
+        
           
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+                
 
-    
+                      
 
+                            
 
+                                
+                                      
           </div>
         </div>
       </div>
@@ -289,8 +409,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-			isArchive: true,
+		isPost: true,
+			isArchive: false,
 				isTag: false,
 					isCategory: false,
 						open_in_new: false,
