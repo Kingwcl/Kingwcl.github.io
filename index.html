@@ -214,15 +214,13 @@
                 
                   <!-- 文章头增加转载声明结束 -->
                   
-                            <h2 id="为什么要使用图床以及为什么选用GitHub-picgo"><a href="#为什么要使用图床以及为什么选用GitHub-picgo" class="headerlink" title="为什么要使用图床以及为什么选用GitHub+picgo"></a>为什么要使用图床以及为什么选用GitHub+picgo</h2><p>我们在写博客时经常需要插入图片，当图片保存在本地的时候上传到博客网站上就不能显示了。而图床可以储存图片的链接，设置图床之后，在自己博客中插入的图片链接就可以随时随地在线预览了。<br>picgo是一个图床管理器，可以快速上传图片并获取图片 URL 链接,它支持很多图床，例如七牛图床、SM.MS，阿里云OSS等。这里我们选择使用github来建图床，因为免费而且够用。</p>
-<h2 id="搭建方法"><a href="#搭建方法" class="headerlink" title="搭建方法"></a>搭建方法</h2><ol>
-<li>创建一个公开的仓库，记住仓库名称；</li>
-<li>生成token。在<a target="_blank" rel="noopener" href="https://github.com/settings/tokens">https://github.com/settings/tokens</a> 处生成token，在developer settings中选择Personal access tokens设置，将其中repo的选项打勾。token的作用是识别你的身份。为token编写描述并生成token，生成之后要记住token，离开界面后token就看不到了。<br><img src="https://cdn.jsdelivr.net/gh/Kingwcl/myBlogPictures@master/img/picgo-1.png"></li>
-<li>接下来进行picgo的配置，我们使用的并不是picgo自带的图床配置，在插件中搜索github plus插件并安装，使用github plus图床。<br><img src="https://cdn.jsdelivr.net/gh/Kingwcl/myBlogPictures@master/img/picgo-5.png"></li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/Kingwcl/myBlogPictures@master/img/picgo-2.png"><br>4. 接着配置gthubPlus设置。repo填写仓库名称，选择分支，token一栏中填写刚才生成的令牌，path路径随便填写，影响的是github仓库中图片的存放路径。接下来的customUrl我们使用cdn加速，选用的jsdelivr网站，它在各个地区节点较多，填写的格式如图，<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BB%93%E5%BA%93%E5%90%8D@%E5%88%86%E6%94%AF%E5%90%8D/">https://cdn.jsdelivr.net/gh/用户名/仓库名@分支名/</a> 。origin选择GitHub即可。<br><img src="https://cdn.jsdelivr.net/gh/Kingwcl/myBlogPictures@master/img/picgo-3.png"><br>5. 之后即可以使用picgo。picgo可以支持剪切板上传和拖动上传，我们可以设置上传提示修改图片名，或者上传后自动返回图片地址，这个可以根据自己的市局需求来。<br><img src="https://cdn.jsdelivr.net/gh/Kingwcl/myBlogPictures@master/img/picgo-6.png"><br>6. 上传图片后，我们可以在相册中查看并导出各种格式的链接。上方可以精确搜索图片以及选择导出格式，每个图片下方还有操作按钮可以选中、删除或者修改。<br><img src="https://cdn.jsdelivr.net/gh/Kingwcl/myBlogPictures@master/img/picgo-4.png"><br>7. 选中一个图片，导出markdown链接粘贴到blog中即可。</p>
-
-                              
+                    <p>本文记录使用github+picgo为blog进行图床搭建的方法。</p>
+                      
+                        <a class="article-more-a" href="/2021/07/06/Image-Hosting/#more">
+                          more >>
+                        </a>
+                        
+                          
 
                                 <!-- 添加文章结束提示 -->
                                 
